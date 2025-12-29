@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur de Devises | Échange Instantané</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header-animation" id="currencyAnimation"></div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-exchange-alt"></i>
+                    <h1>Convertisseur de Devises</h1>
+                </div>
+                <div class="last-update">
+                    <i class="fas fa-sync-alt"></i> 
+                    <span id="updateTime">Dernière mise à jour: Chargement...</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-title">
+            <h2>Convertisseur de Devises Universel</h2>
+            <p>Convertissez instantanément entre plus de 150 devises avec des taux de change actualisés en temps réel</p>
+        </section>
+
+        <section class="converter-card">
+            <div class="converter-header">
+                <h3><i class="fas fa-calculator"></i> Convertisseur</h3>
+                <div class="last-update">
+                    <i class="fas fa-clock"></i> 
+                    <span>Taux de change en temps réel</span>
+                </div>
+            </div>
+            
+            <form class="converter-form" id="converterForm">
+                <div class="amount-group">
+                    <label for="amount">Montant</label>
+                    <div class="amount-input">
+                        <input type="number" id="amount" value="100" min="0" step="0.01" required>
+                    </div>
+                </div>
+                
+                <button type="button" class="swap-button" id="swapButton">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+                
+                <div class="amount-group">
+                    <label for="convertedAmount">Montant converti</label>
+                    <div class="amount-input">
+                        <input type="text" id="convertedAmount" readonly>
+                    </div>
+                </div>
+                
+                <div class="currency-group">
+                    <label for="fromCurrency">De</label>
+                    <select id="fromCurrency" class="currency-select">
+                        <!-- Les options seront ajoutées dynamiquement -->
+                    </select>
+                </div>
+                
+                <div class="currency-group">
+                    <label for="toCurrency">À</label>
+                    <select id="toCurrency" class="currency-select">
+                        <!-- Les options seront ajoutées dynamiquement -->
+                    </select>
+                </div>
+                
+                <button type="submit" class="convert-button">
+                    <i class="fas fa-sync-alt"></i> Convertir
+                </button>
+            </form>
+        </section>
+
+        <section class="result-section" id="resultSection">
+            <div class="result-header">
+                <h3><i class="fas fa-chart-line"></i> Résultat de la conversion</h3>
+                <div class="last-update">
+                    <i class="fas fa-check-circle"></i> 
+                    <span>Conversion réussie</span>
+                </div>
+            </div>
+            
+            <div class="conversion-result">
+                <div class="conversion-amount" id="resultAmount">0.00</div>
+                <div class="conversion-details" id="conversionDetails">100 USD = 0.00 EUR</div>
+                <div class="conversion-rate" id="conversionRate">Taux de change: 1 USD = 0.00 EUR</div>
+            </div>
+            
+            <div class="result-actions">
+                <button class="action-button share" id="shareButton">
+                    <i class="fas fa-share-alt"></i> Partager
+                </button>
+                <button class="action-button history" id="historyButton">
+                    <i class="fas fa-history"></i> Voir l'historique
+                </button>
+            </div>
+        </section>
+
+        <section class="currency-table-section">
+            <div class="section-header">
+                <h3><i class="fas fa-globe-europe"></i> Taux de change populaires</h3>
+                <button class="refresh-rates" id="refreshRates">
+                    <i class="fas fa-redo-alt"></i> Actualiser
+                </button>
+            </div>
+            
+            <div class="table-container">
+                <table class="currency-table">
+                    <thead>
+                        <tr>
+                            <th>Devise</th>
+                            <th>Code</th>
+                            <th>Taux (vs EUR)</th>
+                            <th>Évolution (24h)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ratesTable">
+                        <!-- Les lignes seront ajoutées dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <p>Convertisseur de devises &copy; 2023 - Données fournies par ExchangeRate-API</p>
+        <p>Ce site utilise des taux de change actualisés en temps réel. Les taux peuvent varier.</p>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
